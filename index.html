@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+  <title> new document </title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta charset="UTF-8" />
+  <meta name="generator" content="editplus" />
+  <meta name="author" content="" />
+  <meta name="keywords" content="" />
+  <meta name="description" content="" />
+  <meta name="language" content="ko" />
+
+  
+<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
+<link rel="stylesheet" type="text/css" href="../slick.css" />
+<!-- <link rel="stylesheet" type="text/css" href="../slick-theme.min.css" /> -->
+
+<script type="text/javascript" src="../../js/jquery.min.js"></script>
+<script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
+<script type="text/javascript" src="../slick.js"></script>
+
+
+<style>
+section {max-width:600px; margin: 0 auto;}
+section img {max-width:100%;}
+.slick-dots {width: 100%; overflow: hidden;}
+.slick-dots li button {display: none;}
+.slick-dots li {float: left; width: 25%; text-align: left; cursor:pointer; height: 15px;}
+.slick-dots li span {display: block; width: 0; height: 15px;}
+.slick-dots li.slick-active span {background: #000;animation:slick-progressbar 4s 1;animation-fill-mode: forwards;}
+@keyframes slick-progressbar {
+	0% {width:0%;}
+	100% {width:100%;}
+}
+	
+
+</style>
+</head>
+<body>
+	
+
+<section>
+	<div id="mainSlick">
+		<div><img src="../../img/img_book.jpg"  alt=""></div>
+		<div><img src="../../img/img_wine.jpg" alt=""></div>
+		<div><img src="../../img/img_book.jpg"  alt=""></div>
+		<div><img src="../../img/img_wine.jpg" alt=""></div>
+	</div>
+</section>
+
+
+
+<script>
+$(function(){
+
+	$('#mainSlick').slick({
+		arrows:false,
+		dots: true,
+		autoplay: true,
+		customPaging: function(slider, i) {
+			return $('<span></span>').text(i + 1);
+		},
+	});
+
+});
+</script>
+
+</body>
+</html>
