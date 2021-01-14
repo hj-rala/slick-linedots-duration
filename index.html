@@ -40,12 +40,14 @@ section img {max-width:100%;}
 	
 
 <section>
-	<div id="mainSlick">
+	<div class="mainSlide">
 		<div><img src="../../img/img_book.jpg"  alt=""></div>
 		<div><img src="../../img/img_wine.jpg" alt=""></div>
 		<div><img src="../../img/img_book.jpg"  alt=""></div>
 		<div><img src="../../img/img_wine.jpg" alt=""></div>
 	</div>
+	<a href="javascript:;" class="pause">stop</a>
+	<a href="javascript:;" class="play">start</a>
 </section>
 
 
@@ -53,13 +55,21 @@ section img {max-width:100%;}
 <script>
 $(function(){
 
-	$('#mainSlick').slick({
+	$('.mainSlide').slick({
 		arrows:false,
 		dots: true,
 		autoplay: true,
 		customPaging: function(slider, i) {
 			return $('<span></span>').text(i + 1);
 		},
+	});
+
+	$('.pause').on('click', function() {
+		$('.mainSlide').slick('slickPause')
+	});
+
+	$('.play').on('click', function() {
+		$('.mainSlide').slick('slickPlay')
 	});
 
 });
