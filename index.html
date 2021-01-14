@@ -1,79 +1,86 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
- <head>
-  <title> new document </title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta charset="UTF-8" />
-  <meta name="generator" content="editplus" />
-  <meta name="author" content="" />
-  <meta name="keywords" content="" />
-  <meta name="description" content="" />
-  <meta name="language" content="ko" />
-
-  
-<link rel="stylesheet" type="text/css" href="../../css/reset.css" />
-<link rel="stylesheet" type="text/css" href="../slick.css" />
-<!-- <link rel="stylesheet" type="text/css" href="../slick-theme.min.css" /> -->
-
-<script type="text/javascript" src="../../js/jquery.min.js"></script>
-<script type="text/javascript" src="../../js/jquery.easing.1.3.js"></script>
-<script type="text/javascript" src="../slick.js"></script>
-
-
-<style>
-section {max-width:600px; margin: 0 auto;}
-section img {max-width:100%;}
-.slick-dots {width: 100%; overflow: hidden;}
-.slick-dots li button {display: none;}
-.slick-dots li {float: left; width: 25%; text-align: left; cursor:pointer; height: 15px;}
-.slick-dots li span {display: block; width: 0; height: 15px;}
-.slick-dots li.slick-active span {background: #000;animation:slick-progressbar 4s 1;animation-fill-mode: forwards;}
+/* visual */
+.visual {position: relative; max-width:1546px; overflow: hidden; margin: 0 auto; }
+.visual .slickPage {display: inline-block; position: absolute; bottom: 25%; left: 12.48%;}
+.visual .slickPage > a {display: inline-block; width: 26px; height: 26px; position: absolute;}
+.visual .slickPage > a.pause {background: url('../images/main/btn_slide_stop.png') 0 0 no-repeat; }
+.visual .slickPage > a.play {display: none; background: url('..//images/main/btn_slide_play.png') 0 0 no-repeat; }
+.visual .slick-dots {display: inline-block; position: absolute; bottom: 23%; left: 12.48%;}
+.visual .slick-dots:before {content: ""; position: absolute; top: 0; left: 0; display: inline-block; width: 100%; height: 3px; background: #e3e3e3; z-index: 0;}
+.visual .slick-dots:after {content: ""; display: block; clear: both;}
+.visual .slick-dots li {float: left; width: 89px; text-align: left; cursor:pointer;}
+.visual .slick-dots li button {display: none;}
+.visual .slick-dots li span::before {content: "0";}
+.visual .slick-dots li:nth-child(n + 10) span::before {content: none;}
+.visual .slick-dots li div {display: block; width: 0; height: 3px; position: relative;}
+.visual .slick-dots li div span {position: absolute; top: -35px; left: 0; width: 32px; font-size: 24px; color: #888888; font-weight: 300; font-family: 'Montserrat';}
+.visual .slick-dots li.slick-active div {position: relative; background: #9d9d9d; animation:slick-progressbar 4s 1; animation-fill-mode: forwards;}
+.visual .slick-dots li.slick-active div span {font-weight: 400; color: #555555;}
 @keyframes slick-progressbar {
 	0% {width:0%;}
 	100% {width:100%;}
 }
-	
 
-</style>
-</head>
-<body>
-	
 
-<section>
-	<div class="mainSlide">
-		<div><img src="../../img/img_book.jpg"  alt=""></div>
-		<div><img src="../../img/img_wine.jpg" alt=""></div>
-		<div><img src="../../img/img_book.jpg"  alt=""></div>
-		<div><img src="../../img/img_wine.jpg" alt=""></div>
+
+
+
+<div class="visual">
+		<div class="mainSlide">
+			<div><img src="./resources/images/main/img_v_slide01.jpg" alt=""></div>
+			<div><img src="./resources/images/main/img_v_slide01.jpg" alt=""></div>
+		</div>
+		<div class="slickPage">
+			<a href="javascript:;" class="pause" title="정지"></a>
+			<a href="javascript:;" class="play" title="시작"></a>
+		</div>
 	</div>
-	<a href="javascript:;" class="pause">stop</a>
-	<a href="javascript:;" class="play">start</a>
-</section>
 
 
 
-<script>
+
+
+
+
+
+
+
+
+
+
 $(function(){
 
+	//mainSlide
 	$('.mainSlide').slick({
+		slide: 'div',
 		arrows:false,
 		dots: true,
+		speed: 1000,
+		fade: true,
 		autoplay: true,
+		//autoplaySpeed: 1300,
 		customPaging: function(slider, i) {
-			return $('<span></span>').text(i + 1);
+			return '<div><span>' + (i + 1) + '</span></div>'
 		},
 	});
-
 	$('.pause').on('click', function() {
 		$('.mainSlide').slick('slickPause')
 	});
-
 	$('.play').on('click', function() {
 		$('.mainSlide').slick('slickPlay')
 	});
-
+	$('.slickPage a').each(function(){
+		$(this).bind('click', function(){
+			$(this).css('display','none');
+			$(this).siblings().css('display','block');
+		});
+	});
+	var ml = $('.slick-dots').width() + 10;
+	$('.slickPage').css('margin-left',ml);
 });
-</script>
 
-</body>
-</html>
+
+
+
+
+
+
